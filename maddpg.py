@@ -81,7 +81,7 @@ class MADDPG:
             actions.append(action)
             
             # extract agent i next state and get action via target actor network
-            next_state = states.reshape(-1, 2, 24).index_select(1, agent_id).squeeze(1)
+            next_state = next_states.reshape(-1, 2, 24).index_select(1, agent_id).squeeze(1)
             next_action = agent.actor_target(next_state)
             next_actions.append(next_action)
         
